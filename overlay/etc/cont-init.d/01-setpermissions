@@ -6,5 +6,6 @@ echo " - done."
 
 echo " - setting permissions on Dropbox folder..."
 chown -R $UID:$GID /dbox/Dropbox
-chmod -R g+rwx /dbox/Dropbox
+chmod -R u+rw /dbox/Dropbox
+chmod -R g+rw /dbox/Dropbox
 echo " - done."
