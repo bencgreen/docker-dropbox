@@ -1,4 +1,3 @@
 #!/bin/bash
 
-STATUS=$(su - dbox -c "~/cli start && ~/cli status")
-echo "$STATUS"
+su - dbox -c "~/cli start -i"
