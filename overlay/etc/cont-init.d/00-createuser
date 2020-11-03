@@ -17,8 +17,12 @@ if [[ ! $(getent passwd $UID) ]]; then
     adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
 else
     USERNAME=$(awk -v val=$UID -F ":" '$3==val{print $1}' /etc/passwd)
-    usermod -l dbox $USERNAME
-    usermod -g $GID dbox
+    usermod \
+        -g $GID \
+        -l dbox \
+        -m /dbox \
+        -s /bin/bash \
+        $USERNAME
 fi
 
 usermod -aG sudo dbox
