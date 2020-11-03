@@ -16,7 +16,8 @@ fi
 if [[ ! $(getent passwd $UID) ]]; then
     adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
 else
-    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --gid $GID dbox
+    usermod -l dbox $UID
+    usermod -g $GID dbox
 fi
 
 usermod -aG sudo dbox
