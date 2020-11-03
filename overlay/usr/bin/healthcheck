@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#======================================================================================================================
+# Originally from https://github.com/axllent/alpine-dropbox/blob/master/dropbox-status.sh
+# Modifications copyright (c) 2020 Ben Green <https://bcgdesign.com>
+#======================================================================================================================
+
+STORED="";
+while true
+do
+    if [ -f '/dbox/.dropbox-dist/VERSION' ]; then
+        CUR="$(dropbox-cli status)";
+        if [ "$STORED" != "$CUR" ]; then
+            STORED="$CUR"
+            echo "$STORED"
+        fi
+    fi
+    sleep 1
+done

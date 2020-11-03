@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#
+# Create Dropbox directories
+#
+
+mkdir -p /dbox/Dropbox
+ln /dbox/Dropbox /files
+
+#
+# Create Dropbox user and group
+# From https://github.com/axllent/alpine-dropbox/blob/master/init.sh
+#
+
+addgroup -g $GID dbox
+adduser -S -D -H -h /dbox -s /bin/sh -u $UID -G dbox dbox
+
+chown -R $UID:$GID /dbox
+
+su -s /bin/bash -c "$@" dbox
+
+#
+# Download and Extract Dropbox Headless
+#
+
+cd /dbox
+wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+
+#
+# Download and install Dropbox CLI
+#
+
+wget https://www.dropbox.com/download?dl=packages/dropbox.py -O /usr/local/bin/dropbox-cli
+chmod +x /usr/local/bin/dropbox-cli
