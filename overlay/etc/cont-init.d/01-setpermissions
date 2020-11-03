@@ -1,7 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-echo " - setting permissions on Dropbox folder for user $UID and group $GID..."
+echo " - setting permissions on Dropbox folder..."
 chown -R $UID:$GID /dbox
-chmod -R a+rw /dbox
-chmod -R a+rw /dbox
+chmod -R ug+rw /dbox
 echo " - done."
