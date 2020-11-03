@@ -1,3 +1,6 @@
 #!/bin/bash
 
-su - dbox -c "~/cli start -i"
+echo " - starting Dropbox daemon..."
+su -u dbox
+~/.dropbox-dist/dropboxd
+echo " - done."
