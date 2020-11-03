@@ -7,7 +7,6 @@ LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
     org.label-schema.schema-version="1.0"
 
 ENV GID=1000
-ENV UID=1000
 
 VOLUME [ "/files" ]
 

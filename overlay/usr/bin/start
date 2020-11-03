@@ -11,14 +11,10 @@ if [[ ! $(getent group $GID) ]]; then
     addgroup --gid $GID dbox
 fi
 
-if [[ ! $(getent passwd $GID) ]]; then
-    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
-else
-    adduser $UID $GID
-fi
+adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --gid $GID dbox
 
-usermod -aG sudo $UID
-chown -R $UID:$GID /dbox
+usermod -aG sudo dbox
+chown -R dbox:$GID /dbox
 
 echo " - done."
 
@@ -28,4 +24,4 @@ echo " - done."
 
 echo " - running Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
-su - $UID -c "/dbox/.dropbox-dist/dropboxd"
+su - dbox -c "/dbox/.dropbox-dist/dropboxd"
