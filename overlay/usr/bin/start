@@ -12,9 +12,10 @@ if [[ ! $(getent group $GID) ]]; then
 fi
 
 adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --gid $GID dbox
-
 usermod -aG sudo dbox
+
 chown -R dbox:$GID /dbox
+chmod -R g+rw /dbox
 
 echo " - done."
 
