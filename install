@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #
 # Download and install S6
 #
@@ -14,14 +15,16 @@ curl -L -o "$INSTALLER" "$URL" && \
     "./$INSTALLER" / && \
     rm "$INSTALLER"
 
+
 #
 # Create Dropbox directories
 #
 
 echo " - creating Dropbox directories..."
 mkdir -p /dbox/Dropbox
-ln /dbox/Dropbox /files
+ln -s /dbox/Dropbox /files
 echo " - done."
+
 
 #
 # Download and Extract Dropbox Headless
@@ -31,6 +34,7 @@ echo " - downloading and extracting Dropbox..."
 cd /dbox
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 echo " - done."
+
 
 #
 # Download and install Dropbox CLI
