@@ -7,24 +7,20 @@
 # Modifications copyright (c) 2020 Ben Green <https://bcgdesign.com>
 #======================================================================================================================
 
-echo " - creating Dropbox user and group..."
-
 if [[ ! $(getent group $GID) ]]; then
+    echo " - creating group dbox..."
     addgroup --gid $GID dbox
+    echo " - done."
 fi
 
 if [[ ! $(getent passwd $UID) ]]; then
+    echo " - creating user dbox..."
     adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
+    usermod -aG sudo dbox
+    echo " - done."
 else
+    echo " - modifying user $UID..."
     USERNAME=$(awk -v val=$UID -F ":" '$3==val{print $1}' /etc/passwd)
-    usermod \
-        -d /dbox \
-        -g $GID \
-        -l dbox \
-        -s /bin/bash \
-        $USERNAME
+    [ "$USERNAME" == "dbox" ] || usermod -d /dbox -g $GID -l dbox -s /bin/bash $USERNAME
+    echo " - done."
 fi
-
-usermod -aG sudo dbox
-
-echo " - done."
