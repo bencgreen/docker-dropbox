@@ -18,9 +18,9 @@ if [[ ! $(getent passwd $UID) ]]; then
 else
     USERNAME=$(awk -v val=$UID -F ":" '$3==val{print $1}' /etc/passwd)
     usermod \
+        -d /dbox \
         -g $GID \
         -l dbox \
-        -m /dbox \
         -s /bin/bash \
         $USERNAME
 fi
