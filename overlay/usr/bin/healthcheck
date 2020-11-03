@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #======================================================================================================================
+# Check Dropbox daemon status
 # Originally from https://github.com/axllent/alpine-dropbox/blob/master/dropbox-status.sh
+#
 # Modifications copyright (c) 2020 Ben Green <https://bcgdesign.com>
 #======================================================================================================================
 

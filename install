@@ -1,6 +1,17 @@
 #!/bin/bash
 
 #
+# Download and install S6
+#
+
+cd /tmp
+
+URL="https://github.com/just-containers/s6-overlay/releases/download/v$S6_VERSION/s6-overlay-amd64-installer"
+curl -L -o "$INSTALLER" "$URL" && chmod +x "$INSTALLER"
+
+"./$INSTALLER" / && rm "$INSTALLER"
+
+#
 # Create Dropbox directories
 #
 
