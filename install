@@ -21,12 +21,12 @@ if [[ ! $(getent group $GID) ]]; then
 fi
 
 if [[ ! $(getent passwd $GID) ]]; then
-    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID
-    usermod -aG sudo dbox
+    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
 else
     adduser $UID $GID
 fi
 
+usermod -aG sudo $UID
 chown -R $UID:$GID /dbox
 
 echo " - done."
