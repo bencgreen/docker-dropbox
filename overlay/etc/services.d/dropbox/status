@@ -9,7 +9,7 @@ echo " - starting Dropbox status watcher..."
 STORED=""
 while true ; do
     if [ -f '/dbox/.dropbox-dist/VERSION' ]; then
-        CUR="$(su - dbox -c "~/cli status")";
+        CUR="$(~/cli status)";
         if [ "$STORED" != "$CUR" ]; then
             STORED="$CUR"
             echo " - status: $STORED"
