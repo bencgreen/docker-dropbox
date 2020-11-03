@@ -2,4 +2,4 @@
 
 echo " - starting Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
-runuser dbox -c "~/.dropbox-dist/dropboxd"
+su - dbox -c "~/.dropbox-dist/dropboxd"
