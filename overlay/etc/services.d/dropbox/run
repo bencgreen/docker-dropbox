@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 echo " - starting Dropbox daemon..."
-su - dbox
-~/.dropbox-dist/dropboxd
+s6-envuidgid -B $UID:$GID /dbox/.dropbox-dist/dropboxd
 echo " - done."
