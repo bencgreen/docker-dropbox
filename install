@@ -10,28 +10,6 @@ ln /dbox/Dropbox /files
 echo " - done."
 
 #
-# Create Dropbox user and group
-# From https://github.com/axllent/alpine-dropbox/blob/master/init.sh
-#
-
-echo " - creating Dropbox user and group..."
-
-if [[ ! $(getent group $GID) ]]; then
-    addgroup --gid $GID dbox
-fi
-
-if [[ ! $(getent passwd $GID) ]]; then
-    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
-else
-    adduser $UID $GID
-fi
-
-usermod -aG sudo $UID
-chown -R $UID:$GID /dbox
-
-echo " - done."
-
-#
 # Download and Extract Dropbox Headless
 #
 
