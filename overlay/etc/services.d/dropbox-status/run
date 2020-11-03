@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " - Dropbox status..."
+echo " - starting Dropbox status watcher..."
 
 #======================================================================================================================
 # From https://github.com/axllent/alpine-dropbox/blob/master/dropbox-status.sh
