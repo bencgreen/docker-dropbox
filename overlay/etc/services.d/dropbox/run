@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo " - running Dropbox daemon..."
+echo " - Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
-#su - dbox -c "/dbox/.dropbox-dist/dropboxd"
-runuser dbox -c "/dbox/.dropbox-dist/dropboxd"
+runuser dbox -c "~/.dropbox-dist/dropboxd"

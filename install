@@ -41,6 +41,6 @@ echo " - done."
 #
 
 echo " - downloading and extracting Dropbox CLI..."
-wget https://www.dropbox.com/download?dl=packages/dropbox.py -O /usr/local/bin/dropbox-cli
-chmod +x /usr/local/bin/dropbox-cli
+wget https://www.dropbox.com/download?dl=packages/dropbox.py -O /dbox/cli
+chmod +x /dbox/cli
 echo " - done."
