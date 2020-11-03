@@ -3,4 +3,4 @@
 echo " - running Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
 #su - dbox -c "/dbox/.dropbox-dist/dropboxd"
-runuser -u dbox "/dbox/.dropbox-dist/dropboxd"
+runuser dbox -c "/dbox/.dropbox-dist/dropboxd"
