@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 echo " - setting executable permissions..."
 chmod +x /usr/bin/healthcheck
