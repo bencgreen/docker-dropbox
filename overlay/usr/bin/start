@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Remove pid file from previous run (if exists) as this can block container from restarting
+echo " - running Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
-
 /dbox/.dropbox-dist/dropboxd
-
