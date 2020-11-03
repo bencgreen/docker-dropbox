@@ -1,9 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-echo " - setting executable permissions..."
-chmod +x /usr/bin/healthcheck
-echo " - done."
-
 echo " - setting permissions on Dropbox folder..."
 chown -R $UID:$GID /dbox/Dropbox
 chmod -R u+rw /dbox/Dropbox
