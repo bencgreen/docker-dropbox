@@ -1,5 +1,4 @@
 FROM bcgdesign/alpine-s6:1.0.0
-COPY --from=build /log /log
 
 LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
     org.label-schema.name="Dropbox" \
