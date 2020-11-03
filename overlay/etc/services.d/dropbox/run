@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv bash
 
 echo " - starting Dropbox daemon..."
-s6-setuidgid $UID:$GID "/dbox/cli start"
+s6-envuidgid -u dbox /dbox/.dropbox-dist/dropboxd
 echo " - done."
