@@ -1,7 +1,12 @@
 #!/bin/bash
 
-echo " - starting Dropbox daemon..."
+PREV=""
 STATUS=$(su - dbox -c "~/cli running")
 if [ "$STATUS" == "0" ] ; then
+    echo " - starting Dropbox daemon..."
     su - dbox -c "~/.dropbox-dist/dropboxd"
+else
+    if [[ "$STATUS" != "$PREV" ]] ; then
+        echo "$STATUS"
+    fi
 fi
