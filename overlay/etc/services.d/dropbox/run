@@ -2,7 +2,7 @@
 
 echo " - starting Dropbox status watcher"
 chmod +x /etc/services.d/dropbox/status
-su - dbox -c "/etc/services.d/dropbox/status &"
+#su - dbox -c "/etc/services.d/dropbox/status &"
 
 echo " - starting Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
