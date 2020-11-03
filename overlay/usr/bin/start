@@ -6,17 +6,20 @@
 #
 
 echo " - creating Dropbox user and group..."
-
 if [[ ! $(getent group $GID) ]]; then
     addgroup --gid $GID dbox
 fi
-
-adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --gid $GID dbox
+if [[ ! $(getent passwd $UID) ]]; then
+    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
+else
+    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --gid $GID dbox
+fi
 usermod -aG sudo dbox
+echo " - done."
 
-chown -R dbox:$GID /dbox
-chmod -R g+rw /dbox
-
+echo " - setting permissions on Dropbox folder..."
+chown -R $UID:$GID /dbox/Dropbox
+chmod -R g+rwx /dbox/Dropbox
 echo " - done."
 
 #
@@ -25,4 +28,4 @@ echo " - done."
 
 echo " - running Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
-su - dbox -c "/dbox/.dropbox-dist/dropboxd"
+su - dbox -c "/dbox/.dropbox-dist/dropboxd &"
