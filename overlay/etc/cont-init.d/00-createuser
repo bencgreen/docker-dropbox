@@ -7,20 +7,33 @@
 # Modifications copyright (c) 2020 Ben Green <https://bcgdesign.com>
 #======================================================================================================================
 
+DBOX="dbox"
+
 if [[ ! $(getent group $GID) ]]; then
     echo " - creating group dbox..."
-    addgroup --gid $GID dbox
+    addgroup --gid $GID $DBOX
     echo " - done."
 fi
 
 if [[ ! $(getent passwd $UID) ]]; then
-    echo " - creating user dbox..."
-    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID dbox
-    usermod -aG sudo dbox
+    echo " - creating user $DBOX..."
+    adduser --system --disabled-password --no-create-home --home /dbox --shell /bin/bash --uid $UID --gid $GID $DBOX
+    usermod -aG sudo $DBOX
     echo " - done."
 else
-    echo " - modifying user $UID..."
+    
     USERNAME=$(awk -v val=$UID -F ":" '$3==val{print $1}' /etc/passwd)
-    [ "$USERNAME" == "dbox" ] || usermod -d /dbox -g $GID -l dbox -s /bin/bash $USERNAME
-    echo " - done."
+    if [[ ! "$USERNAME" == $DBOX ]] ; then
+        echo " - modifying user $UID..." && \
+        usermod \
+            -d /dbox \
+            -g $GID \
+            -l $DBOX \
+            -s /bin/bash \
+            -aG sudo \
+            $USERNAME
+        echo " - done."
+    else
+        echo " - $DBOX user already exists."
+    fi
 fi

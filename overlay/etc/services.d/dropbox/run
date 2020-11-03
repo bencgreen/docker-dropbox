@@ -1,6 +1,6 @@
 #!/bin/bash
 
 echo " - starting Dropbox daemon..."
-su -u dbox
+su dbox
 ~/.dropbox-dist/dropboxd
 echo " - done."
