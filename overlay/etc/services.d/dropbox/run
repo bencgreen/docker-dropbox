@@ -1,4 +1,4 @@
 #!/bin/bash
 
-STATUS=$(su - dbox -c "~/cli start_dropbox || ~/cli status")
+STATUS=$(su - dbox -c "~/cli start && ~/cli status")
 echo "$STATUS"
