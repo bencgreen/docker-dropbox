@@ -27,7 +27,7 @@ echo " - done."
 # Download and Extract Dropbox Headless
 #
 
-echo " - downloading and extracting Dropbox headless..."
+echo " - downloading and extracting Dropbox..."
 cd /dbox
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 echo " - done."

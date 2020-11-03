@@ -2,4 +2,6 @@
 
 echo " - running Dropbox daemon..."
 rm -f /dbox/.dropbox/dropbox.pid
+
+su - dbox -c "./status &"
 su - dbox -c "/dbox/.dropbox-dist/dropboxd"
