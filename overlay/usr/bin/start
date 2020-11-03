@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Remove pid file from previous run (if exists) as this can block container from restarting
+rm -f /dbox/.dropbox/dropbox.pid
+
+/dbox/.dropbox-dist/dropboxd
+
